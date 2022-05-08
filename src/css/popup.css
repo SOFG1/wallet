@@ -93,10 +93,24 @@
 }
 
 .popup-container .error {
-  font-size: 13px;
-  font-family: sans-serif;
-  color: red;
+  display: inline-block;
   text-align: center;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 500;
+  background-color: rgba(11, 13, 51, 0.3);
+  padding: 10px 20px 12px 20px;
+  margin: 20px 0px 10px 0;
+  border-radius: 100px;
+}
+
+.popup-container .success {
+  display: inline-block;
+  text-align: center;
+  font-size: 13px;
+  color: greenyellow;
+  font-weight: 500;
+  width: 100%;
 }
 
 .popup-container img {
@@ -129,7 +143,7 @@
   transition: all 0.5s;
 }
 
-.wallet-button img {
+.wallet-logo {
   width: 50px;
   margin-right: 10px;
   object-fit: contain;
@@ -246,3 +260,4 @@ option {
 #h2-mob {
   margin-bottom: 30px;
 }
+

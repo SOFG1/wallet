@@ -3,9 +3,9 @@ import Pic from "../../img/eth.svg";
 import { Element } from "react-scroll/modules";
 
 const Levels = (props) => {
-  const select = (level) => {
+  const select = (price) => {
     props.togglePopup(true);
-    props.selectLevel(level);
+    props.selectLevel(price);
   };
   return (
     <Element id="levels" name="levels" className="levels">
