@@ -8,7 +8,7 @@ const Popup = (props) => {
     if (!e.target.closest('.popup-container')) props.togglePopup(false)
   }
   return (
-    <div onClick={(e)=> handleClick(e)} className={cn("popup", "hidden", { ["is-visible"]: props.opened })}>
+    <div onClick={(e)=> handleClick(e)} className={cn("popup", { ["is-visible"]: props.opened })}>
       <div className="popup-container">
         <h1>
           Please Connect your Wallet <br />
