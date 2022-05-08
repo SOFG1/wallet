@@ -1,23 +1,63 @@
-import img from "../../img/metamask.svg";
+import img from "../../img/walletconnect.svg";
 import etherImg from "../../img/eth.svg";
-import { useState } from "react";
 import cn from "classnames";
+import { WalletConnect } from "../Connectors";
+import { useWeb3React } from "@web3-react/core";
+import { useState } from "react";
 
 const Popup = (props) => {
-  const handleClick = (e)=> {
-    if (!e.target.closest('.popup-container')) props.togglePopup(false)
+  const { active, account, library, connector, activate, deactivate } =
+    useWeb3React();
+  const [error, setError] = useState(false);
+  const handleClick = (e) => {
+    if (!e.target.closest(".popup-container")) props.togglePopup(false);
+  };
+  //Connect wallet function
+  async function connectWallet() {
+    try {
+      await activate(WalletConnect);
+    } catch (ex) {
+      setError(true);
+    }
+  }
+  //Disconnect wallet function
+  async function disconnect() {
+    try {
+      deactivate();
+    } catch (ex) {
+      console.log(ex);
+    }
   }
   return (
-    <div onClick={(e)=> handleClick(e)} className={cn("popup", { ["is-visible"]: props.opened })}>
+    <div
+      onClick={(e) => handleClick(e)}
+      className={cn("popup", { ["is-visible"]: props.opened })}
+    >
       <div className="popup-container">
-        <h1>
-          Please Connect your Wallet <br />
-          with Ethereum Mainnet Network
-        </h1>
-        <button className="metamask-button">
-          <img src={img} alt="metamask" />
-        </button>
-        <p className="connected-wallet"></p>
+        {active ? (
+          <>
+            <h1>You've connected your wallet</h1>
+            <p className="connected-wallet">{account}</p>
+            <button
+              className="wallet-button disconnect-button"
+              onClick={disconnect}
+            >
+              Disconnect
+            </button>
+          </>
+        ) : (
+          <>
+            <h1>
+              Please Connect your Wallet <br />
+              with Ethereum Mainnet Network
+            </h1>
+            <button className="wallet-button" onClick={connectWallet}>
+              <img src={img} alt="walletconnect" />
+              Connect Wallet
+            </button>
+          </>
+        )}
+        {error && <p className="error">Some error occured. Refresh the page</p>}
         <p id="acc_about"></p>
         <h2>Select a Level and Join Game</h2>
         <div className="input-box">
@@ -43,7 +83,12 @@ const Popup = (props) => {
           <img src={etherImg} alt="eth-input" />
         </div>
         <button className="join-button-popup">Join Game</button>
-        <button className="cancel-button popup-close" onClick={()=> props.togglePopup(false)}>Cancel</button>
+        <button
+          className="cancel-button popup-close"
+          onClick={() => props.togglePopup(false)}
+        >
+          Cancel
+        </button>
         <div id="alert_box"></div>
       </div>
     </div>

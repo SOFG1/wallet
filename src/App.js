@@ -9,10 +9,12 @@ import About from './components/About/About'
 import Footer from "./components/Footer/Footer";
 import Popup from "./components/Popup/Popup";
 
+
+
 function App() {
   const [initializing, setInit] = useState(false);
   const [popup, togglePopup] = useState(false);
-  const [selectedLevel, selectLevel] = useState(12)
+  const [selectedLevel, selectLevel] = useState(12);
   useEffect(()=> {
     if (!initializing) {
       setTimeout(()=> {

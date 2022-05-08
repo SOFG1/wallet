@@ -618,12 +618,6 @@ footer {
     display: none;
 }
 
-.connected-wallet {
-    font-size: 20px;
-    font-family: sans-serif;
-    color: #fff;
-}
-
 .preloader-item:last-child {
     top: auto;
     bottom: 0;

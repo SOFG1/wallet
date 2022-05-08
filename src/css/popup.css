@@ -28,7 +28,11 @@
   width: 90%;
   max-width: 440px;
   margin: 70px auto;
-  background: linear-gradient(145deg, rgba(202, 94, 229, 0.1), rgba(95, 44, 247, 0.1));
+  background: linear-gradient(
+    145deg,
+    rgba(202, 94, 229, 0.1),
+    rgba(95, 44, 247, 0.1)
+  );
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 40px 0 55px 0;
@@ -56,153 +60,189 @@
 }
 
 .popup-container h1 {
-    font-size: 18px;
-    font-weight: 400;
-    color: #fff;
-    margin: 0 0 25px 0;
-    line-height: 1.5em;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 25px 0;
+  line-height: 1.5em;
 }
 
 .popup-container h2 {
-    font-size: 16px;
-    font-weight: 500;
-    color: #5458a8;
-    margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #5458a8;
+  margin: 0;
 }
 
 .popup-container p {
-    font-size: 13px;
-    font-weight: 500;
-    color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.popup-container .connected-wallet {
+  word-break: break-all;
+  font-size: 13px;
+  font-family: sans-serif;
+  color: rgb(141, 234, 1);
+  text-align: center;
+  padding: 15px 18px;
+  border-radius: 20px;
+  background-color: rgba(11, 13, 51, 0.3);
+  margin: 0 30px 15px;
+}
+
+.popup-container .error {
+  font-size: 13px;
+  font-family: sans-serif;
+  color: red;
+  text-align: center;
 }
 
 .popup-container img {
-    max-width: 100%;
-    pointer-events: none;
+  max-width: 100%;
+  pointer-events: none;
 }
 
-.metamask-button {
-    font-family: "Montserrat", sans-serif;
-    background-color: rgba(11, 13, 51, 0.3);
-    border-radius: 100px;
-    height: 60px;
-    width: 262px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    transition: all 0.5s;
-    margin-bottom: 10px;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    -webkit-tap-highlight-color: transparent;
+.wallet-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  background-color: rgba(11, 13, 51, 0.3);
+  border-radius: 100px;
+  height: 60px;
+  width: 262px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.5s;
+  margin: 0 auto 10px;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
-.metamask-button:hover {
-    background-color: rgba(11, 13, 51, 0.4);
-    transition: all 0.5s;
+.wallet-button:hover {
+  background-color: rgba(11, 13, 51, 0.4);
+  transition: all 0.5s;
+}
+
+.wallet-button img {
+  width: 50px;
+  margin-right: 10px;
+  object-fit: contain;
+  object-position: center;
+
+}
+
+.disconnect-button {
+  color: red;
+  font-weight: 700;
+  height: 30px;
 }
 
 .join-input {
-    font-family: "Montserrat", sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    height: 50px;
-    width: 252px;
-    display: block;
-    border-radius: 100px;
-    border: none;
-    background-color: rgba(11, 13, 51, 0.3);
-    padding: 0 20px;
-    outline: none;
-    color: #e2e4e9;
-    margin: 0 auto;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  height: 50px;
+  width: 252px;
+  display: block;
+  border-radius: 100px;
+  border: none;
+  background-color: rgba(11, 13, 51, 0.3);
+  padding: 0 20px;
+  outline: none;
+  color: #e2e4e9;
+  margin: 0 auto;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
 }
 
 option {
-    background-color: #fff;
-    color: #000;
+  background-color: #fff;
+  color: #000;
 }
 
 .input-box {
-    height: 50px;
-    width: 262px;
-    margin: 20px auto;
-    position: relative;
+  height: 50px;
+  width: 262px;
+  margin: 20px auto;
+  position: relative;
 }
 
 .input-box img {
-    width: 26px;
-    position: absolute;
-    right: 20px;
-    top: 12px;
+  width: 26px;
+  position: absolute;
+  right: 20px;
+  top: 12px;
 }
 
 .join-input::placeholder {
-    color: #5458a8;
+  color: #5458a8;
 }
 
 .join-button-popup {
-    font-family: "Montserrat", sans-serif;
-    background: linear-gradient(145deg, #ca5ee5, #5f2cf7);
-    border: none;
-    border-radius: 100px;
-    padding: 15px 25px 18px 25px;
-    color: #e2e4e9;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.5s;
-    margin: 0 8px;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    -webkit-tap-highlight-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(145deg, #ca5ee5, #5f2cf7);
+  border: none;
+  border-radius: 100px;
+  padding: 15px 25px 18px 25px;
+  color: #e2e4e9;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.5s;
+  margin: 0 8px;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .join-button-popup:hover {
-    box-shadow: 0 5px 20px rgba(115, 53, 244, 0.5);
-    transition: all 0.5s;
+  box-shadow: 0 5px 20px rgba(115, 53, 244, 0.5);
+  transition: all 0.5s;
 }
 
 .cancel-button {
-    font-family: "Montserrat", sans-serif;
-    background-color: rgba(11, 13, 51, 0.3);
-    border: none;
-    border-radius: 100px;
-    padding: 15px 30px 18px 30px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.5s;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    -webkit-tap-highlight-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  background-color: rgba(11, 13, 51, 0.3);
+  border: none;
+  border-radius: 100px;
+  padding: 15px 30px 18px 30px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.5s;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .cancel-button:hover {
-    background-color: rgba(11, 13, 51, 0.4);
-    transition: all 0.5s;
+  background-color: rgba(11, 13, 51, 0.4);
+  transition: all 0.5s;
 }
 
 #alert_box {
-    font-size: 13px;
-    color: #fff;
-    font-weight: 500;
-    background-color: rgba(11, 13, 51, 0.3);
-    padding: 10px 20px 12px 20px;
-    margin: 20px 0px 10px 0;
-    border-radius: 100px;
-    display: none;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 500;
+  background-color: rgba(11, 13, 51, 0.3);
+  padding: 10px 20px 12px 20px;
+  margin: 20px 0px 10px 0;
+  border-radius: 100px;
+  display: none;
 }
 
 #h1-mob {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 #h2-mob {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
