@@ -1,55 +1,38 @@
-import "./App.css";
-import { useWeb3React } from "@web3-react/core";
-import { Injected, WalletConnect } from "./components/Connectors";
+import "./css/main.css";
+import "./css/media.css";
+import "./css/popup.css";
+import { useEffect, useState } from "react";
+import Preloader from "./components/Preloader/Preloader";
+import Header from "./components/Header/Header";
+import Levels from "./components/Levels/Levels";
+import About from './components/About/About'
+import Footer from "./components/Footer/Footer";
+import Popup from "./components/Popup/Popup";
 
 function App() {
-  const { active, account, library, connector, activate, deactivate } =
-    useWeb3React();
-
-  async function connectMetaMask() {
-    try {
-      await activate(Injected);
-    } catch (ex) {
-      console.log(ex);
+  const [initializing, setInit] = useState(false);
+  const [popup, togglePopup] = useState(false);
+  const [selectedLevel, selectLevel] = useState(12)
+  useEffect(()=> {
+    if (!initializing) {
+      setTimeout(()=> {
+        setInit(true)
+      }, 750)
     }
-  }
-
-  async function connectConnectWallet() {
-    try {
-      await activate(WalletConnect);
-    } catch (ex) {
-      console.log(ex);
-    }
-  }
-
-  async function disconnect() {
-    try {
-      deactivate();
-    } catch (ex) {
-      console.log(ex);
-    }
-  }
-
+  }, [])
   return (
     <div className="App">
-      <div className="popup">
-        <h1>
-          Please Connect your Wallet <br /> with Ethereum Mainnet Network
-        </h1>
-        {active ? (
-          <>
-            <button onClick={disconnect}>Disconnect</button>
-            <p>{account}</p>
-          </>
-        ) : (
-          <>
-            <button onClick={connectConnectWallet}>
-              Connect to WalletConenct
-            </button>{" "}
-            <button onClick={connectMetaMask}>Connect to MetaMask</button>
-          </>
-        )}
-      </div>
+      {!initializing ? (
+        <Preloader />
+      ) : (
+        <>
+          <Header togglePopup={togglePopup} />
+          <Levels selectLevel={selectLevel} togglePopup={togglePopup}  />
+          <About />
+          <Footer togglePopup={togglePopup} />
+          <Popup togglePopup={togglePopup} selectedLevel={selectedLevel} selectLevel={selectLevel} opened={popup}/>
+        </>
+      )}
     </div>
   );
 }

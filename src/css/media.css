@@ -1,0 +1,363 @@
+/*==========  Desktop First Method  ==========*/
+
+@media (max-width: 1400px) {
+  /* DESKTOP */
+
+	.title-item {
+    	margin: 100px 0 100px 0;
+	}
+
+	.levels {
+    	background-size: 130%;
+    	background-position: 50% 50%;
+	}
+
+}
+
+@media (max-width: 1220px) {
+  /* DESKTOP */
+
+	.container {
+		width: 970px;
+		margin: 0 auto;
+		padding: 0 15px;
+	}
+
+	.link-item {
+    	padding-left: 50px;
+	}
+
+	.title-item {
+    	margin: 60px 0;
+	}
+
+	.title-item h1 {
+    	font-size: 100px;
+    	line-height: 0.9em;
+	}
+
+	.title-item p {
+    	font-size: 20px;
+    	line-height: 1.3em;
+    	margin: 15px 0;
+	}
+
+	.level-item {
+    	width: 23%;
+    	padding: 30px;
+	}
+
+	.title-levels h1 {
+    	line-height: 0.9em;
+	}
+
+}
+
+@media (max-width: 1024px){
+  /* TABLET */
+
+  	.container {
+		width: 720px;
+		margin: 0 auto;
+		padding: 0 15px;
+	}
+
+	.link-item {
+    	display: none;
+	}
+
+	header {
+    	background-size: 130%;
+    	background-position: 50% 50%;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	.mob {
+		display: block;
+	}
+
+	.header img {
+    	width: 90px;
+	}
+
+	.head-button {
+    	padding: 13px 20px 16px 20px;
+	}
+
+	.title-item {
+    	margin: 60px 0 120px 0; 
+	}
+
+	.title-item h1 {
+    	font-size: 80px;
+    	line-height: 0.9em;
+	}
+
+	.title-item p {
+    	font-size: 20px;
+    	line-height: 1.3em;
+    	margin: 15px 0;
+	}
+
+	.level-price img {
+    	width: 26px;
+	}
+
+	.level-item {
+    	width: 35%;
+    	padding: 30px;
+	}
+
+	.title-levels h1 {
+    	line-height: 0.9em;
+	}
+
+	.levels {
+    	background-size: 150%;
+    	background-position: 50% 50%;
+	}
+
+	.about-title h1 {
+    	line-height: 1em;
+	}
+
+	footer {
+   		margin: 30px 0 20px 0;
+	}
+
+	.sup img {
+    	width: 90px;
+    	display: block;
+    	margin: 0 auto 30px;
+	}
+
+	.footer-box {
+		text-align: center;
+	}
+
+	.sup {
+		display: inline-block;
+	}
+
+	.sup h1 {
+		margin-bottom: 30px;
+	}
+
+	.footer-links {
+		margin: 45px 0;
+		display: inline-block;
+	}
+
+}
+
+@media (min-width: 425px) and (max-width: 768px){
+  /* TABLET */
+
+  	.container {
+		width: 390px;
+		margin: 0 auto;
+		padding: 0 15px;
+	}
+
+	header {
+    	background-size: 200%;
+    	background-position: 50% 100%;
+	}
+
+	.title-item {
+    	margin: 50px 0 450px 0;
+    	text-align: center;
+	}
+
+	.title-item h1 {
+    	font-size: 100px;
+    	line-height: 0.9em;
+	}
+
+	.title-item p {
+    	font-size: 20px;
+    	line-height: 1.3em;
+    	margin: 15px 0;
+	}
+
+	.level-item {
+    	width: 80%;
+    	padding: 30px;
+    	margin: 15px 0;
+	}
+
+	.title-levels h1 {
+    	line-height: 0.9em;
+	}
+
+	.levels {
+    	background-size: 200%;
+    	background-position: 50% 50%;
+	}
+
+	.about-box {
+    	display: inline-block;
+	}
+
+	.about-text {
+    	width: 80%;
+	}
+
+	.about-total {
+    	width: 80%;
+    	margin: 60px 0 0 0;
+	}
+
+	.about-title h1 {
+    	line-height: 1em;
+	}
+
+	.levels {
+    	padding: 10px 0 40px 0;
+	}
+
+	footer {
+   		margin: 30px 0 20px 0;
+	}
+
+	.sup img {
+    	width: 90px;
+    	display: block;
+    	margin: 0 auto 30px;
+	}
+
+	.footer-box {
+		text-align: center;
+	}
+
+	.sup {
+		display: inline-block;
+	}
+
+	.sup h1 {
+		margin-bottom: 30px;
+	}
+
+	.footer-links {
+		margin: 45px 0;
+		display: inline-block;
+	}
+
+	.copyright {
+    	margin-top: 40px;
+	}
+
+}
+
+@media (max-width: 425px) {
+  /* MOBILE */
+
+  	.container {
+		width: 330px;
+		margin: 0 auto;
+		padding: 0 15px;
+	}
+
+	header {
+    	background-size: 300%;
+    	background-position: 50% 100%;
+    	padding: 30px 0 50px 0;
+	}
+
+	.title-item {
+    	margin: 50px 0 450px 0;
+    	text-align: center;
+	}
+
+	.title-item h1 {
+    	font-size: 80px;
+    	line-height: 0.9em;
+	}
+
+	.title-item p {
+    	font-size: 20px;
+    	line-height: 1.3em;
+    	margin: 15px 0;
+	}
+
+	.level-item {
+    	width: 80%;
+    	padding: 30px;
+    	margin: 15px 0;
+	}
+
+	.title-levels h1 {
+    	line-height: 0.9em;
+	}
+
+	.levels {
+		background-image: url(https://onegame.win/img/game-bg.jpg);
+    	background-repeat: no-repeat;
+    	background-size: 250%;
+    	background-position: 45% 5%;
+	}
+
+	.about-box {
+    	display: inline-block;
+	}
+
+	.about-text {
+    	width: 80%;
+	}
+
+	.about-total {
+    	width: 80%;
+    	margin: 60px 0 0 0;
+	}
+
+	.about-title h1 {
+    	line-height: 1em;
+	}
+
+	.levels {
+    	padding: 10px 0 20px 0;
+	}
+
+	.footer-links img {
+    	width: 90px;
+	}
+
+	footer {
+   		margin: 30px 0 20px 0;
+	}
+
+	.sup img {
+    	width: 90px;
+    	display: block;
+    	margin: 0 auto 30px;
+	}
+
+	.footer-box {
+		text-align: center;
+	}
+
+	.sup {
+		display: inline-block;
+	}
+
+	.sup h1 {
+		margin-bottom: 30px;
+	}
+
+	.links-box {
+		margin: 0;
+	}
+
+	.footer-links {
+		margin: 45px 0 0 0;
+		display: inline-block;
+	}
+
+	.copyright {
+    	margin-top: 40px;
+	}
+
+}
