@@ -1,23 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useWeb3React } from "@web3-react/core";
+import { Injected, WalletConnect } from "./components/Connectors";
 
 function App() {
+  const { active, account, library, connector, activate, deactivate } =
+    useWeb3React();
+
+  async function connectMetaMask() {
+    try {
+      await activate(Injected);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
+  async function connectConnectWallet() {
+    try {
+      await activate(WalletConnect);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
+  async function disconnect() {
+    try {
+      deactivate();
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="popup">
+        <h1>
+          Please Connect your Wallet <br /> with Ethereum Mainnet Network
+        </h1>
+        {active ? (
+          <>
+            <button onClick={disconnect}>Disconnect</button>
+            <p>{account}</p>
+          </>
+        ) : (
+          <>
+            <button onClick={connectConnectWallet}>
+              Connect to WalletConenct
+            </button>{" "}
+            <button onClick={connectMetaMask}>Connect to MetaMask</button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
