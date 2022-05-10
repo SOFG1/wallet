@@ -35,7 +35,7 @@
   );
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 40px 0 55px 0;
+  padding: 40px 0 55px;
   text-align: center;
   -webkit-transform: translateY(-40px);
   -moz-transform: translateY(-40px);
@@ -86,7 +86,7 @@
   font-family: sans-serif;
   color: rgb(141, 234, 1);
   text-align: center;
-  padding: 15px 18px;
+  padding: 15px;
   border-radius: 20px;
   background-color: rgba(11, 13, 51, 0.3);
   margin: 0 30px 15px;
@@ -144,17 +144,14 @@
 }
 
 .wallet-logo {
-  width: 50px;
-  margin-right: 10px;
+  width: 180px;
   object-fit: contain;
   object-position: center;
 
 }
 
 .disconnect-button {
-  color: red;
-  font-weight: 700;
-  height: 30px;
+  transition: none !important;
 }
 
 .join-input {

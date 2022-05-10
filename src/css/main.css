@@ -373,7 +373,7 @@ header {
 
 /* ======= FOOTER STYLE ======= */
 
-footer {
+.footer {
     width: 100%;
     padding: 40px 0;
     margin: 80px 0 20px 0;

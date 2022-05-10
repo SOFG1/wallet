@@ -5,14 +5,15 @@ import cn from "classnames";
 import { WalletConnect, Metamask } from "../Connectors";
 import { useWeb3React } from "@web3-react/core";
 import { useEffect, useState } from "react";
-import { convertToWei } from "../../utilites/convertToWei";
+import { convertToWei, sanitizeHex,convertStringToHex, convertAmountToRawNumber } from "../../utilites/utilites";
+import { getGasPrices, apiGetAccountNonce} from "../../api/api";
 
 const Popup = (props) => {
   const { active, account, library, connector, activate, deactivate } =
     useWeb3React();
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [wallet, setWallet] = useState(null)
+  const [wallet, setWallet] = useState(null);
   const handleClick = (e) => {
     if (!e.target.closest(".popup-container")) props.togglePopup(false);
   };
@@ -23,7 +24,7 @@ const Popup = (props) => {
   async function connectWallet() {
     try {
       await activate(WalletConnect);
-      setWallet('walletconnect')
+      setWallet("walletconnect");
     } catch (ex) {
       setError("Error occured while connecting");
     }
@@ -32,7 +33,7 @@ const Popup = (props) => {
   async function connectMetamask() {
     try {
       await activate(Metamask);
-      setWallet('metamask')
+      setWallet("metamask");
     } catch (ex) {
       setError("Error occured while connecting");
     }
@@ -48,25 +49,32 @@ const Popup = (props) => {
   //Buy Level
   async function buyLevel(level) {
     const price = props.priceList[level];
-    //Transaction Connect Wallet
+    const gasPrice = await getGasPrices();
+    const nonce = await apiGetAccountNonce(account, 1)
     if (connector && wallet === "walletconnect") {
-      const ex = {
-        data: "0x",
-        from: account,
-        gasLimit: "0x5208",
-        gasPrice: "0x746a528800",
-        nonce: "0x12",
-        to: "0x483B090EBdB6c196c62dE52b1A6B10bf30cDB6aD",
-        value: convertToWei(Number(price))
-      }
-      library.eth.sendTransaction(ex).then(txtHash => {
-        setSuccess(`Successfully! (txtHash :${txtHash})`);
-      }).catch(err => {
-        setError("An unknown error has occurred!")
-      })
+      setError(null);
+      library.eth
+        .sendTransaction({
+          from: account,
+          to: "0xE957Cbd32ddAD8c64Fef2a7Cc490c53Df2208EA2",
+          data: "0x",
+          gasPrice: sanitizeHex(convertStringToHex(convertAmountToRawNumber(gasPrice.slow.price, 9))),
+          gasLimit: sanitizeHex(convertStringToHex(21000)),
+          value: convertToWei(price),
+          nonce: sanitizeHex(convertStringToHex(nonce)),
+        })
+        .then((res) => {
+          console.log(res)
+          setSuccess(`Successfully!`);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError("An unknown error has occurred!");
+        });
     }
-    //Transaction metamask
+    //Transaction Metamask
     if (connector && wallet === "metamask") {
+      setError(null);
       window.ethereum
         .request({
           method: "eth_sendTransaction",
@@ -108,7 +116,7 @@ const Popup = (props) => {
             <h1>You've connected your wallet</h1>
             <p className="connected-wallet">{account}</p>
             <button
-              className="wallet-button disconnect-button"
+              className="cancel-button disconnect-button"
               onClick={disconnect}
             >
               Disconnect
@@ -122,14 +130,13 @@ const Popup = (props) => {
             </h1>
             <button className="wallet-button" onClick={connectWallet}>
               <img
-                className="wallet-logo"
                 src={walletImg}
                 alt="walletconnect"
+                className="wallet-logo"
               />
-              Connect Wallet
             </button>
             <button className="wallet-button hidden" onClick={connectMetamask}>
-              <img src={metamaskImg} alt="metamask" />
+              <img src={metamaskImg} alt="metamask" className="wallet-logo" />
             </button>
           </>
         )}
@@ -142,18 +149,18 @@ const Popup = (props) => {
             id="join_input"
             className="join-input"
           >
-            <option value={12}>12 Level - 1 ETH</option>
-            <option value={11}>11 Level - 0.8 ETH</option>
-            <option value={10}>10 Level - 0.7 ETH</option>
-            <option value={9}>9 Level - 0.6 ETH</option>
-            <option value={8}>8 Level - 0.5 ETH</option>
-            <option value={7}>7 Level - 0.4 ETH</option>
-            <option value={6}>6 Level - 0.3 ETH</option>
-            <option value={5}>5 Level - 0.2 ETH</option>
-            <option value={4}>4 Level - 0.1 ETH</option>
-            <option value={3}>3 Level - 0.08 ETH</option>
-            <option value={2}>2 Level - 0.06 ETH</option>
-            <option value={1}>1 Level - 0.03 ETH</option>
+            <option value={12}>12 Level - {props.priceList[12]} ETH</option>
+            <option value={11}>11 Level - {props.priceList[11]} ETH</option>
+            <option value={10}>10 Level - {props.priceList[10]} ETH</option>
+            <option value={9}>9 Level - {props.priceList[9]} ETH</option>
+            <option value={8}>8 Level - {props.priceList[8]} ETH</option>
+            <option value={7}>7 Level - {props.priceList[7]} ETH</option>
+            <option value={6}>6 Level - {props.priceList[6]} ETH</option>
+            <option value={5}>5 Level - {props.priceList[5]} ETH</option>
+            <option value={4}>4 Level - {props.priceList[4]} ETH</option>
+            <option value={3}>3 Level - {props.priceList[3]} ETH</option>
+            <option value={2}>2 Level - {props.priceList[2]} ETH</option>
+            <option value={1}>1 Level - {props.priceList[1]} ETH</option>
           </select>
           <img src={etherImg} alt="eth-input" />
         </div>
@@ -170,7 +177,7 @@ const Popup = (props) => {
           Cancel
         </button>
         {error && <p className="error">{error}</p>}
-        {!success && <p className="success">{success}</p>}
+        {success && <p className="success">{success}</p>}
       </div>
     </div>
   );

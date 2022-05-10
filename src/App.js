@@ -29,7 +29,7 @@ function App(props) {
     if (opened) selectLevel(12)
   }
   const priceList = {
-    1: 0.03,
+    1: 0.0002,
     2: 0.06,
     3: 0.08,
     4: 0.1,
@@ -49,7 +49,7 @@ function App(props) {
       ) : (
         <>
           <Header togglePopup={toggleModal} />
-          <Levels selectLevel={selectLevel} togglePopup={toggleModal}  />
+          <Levels selectLevel={selectLevel} togglePopup={toggleModal} priceList={priceList} />
           <About />
           <Footer togglePopup={toggleModal} />
           <Popup web3={props.web3} priceList={priceList} togglePopup={toggleModal} selectedLevel={selectedLevel} selectLevel={selectLevel} opened={popup}/>
